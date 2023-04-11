@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap読み込み-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/styles.css">
+  <title>3択クイズ</title>
+</head>
+<body>
+  <div class="main container pt-3">
+    <h1>3択クイズ</h1>
+    <div class="quiz">
+      <h3 class="">問題</h3>
+      <div class="question">
+        <p id="question">問題文</p>
+      </div>
+      <div class="answer">
+        <div id="answer0" class="btn btn-primary" onclick="checkAnswer()">選択肢1</div>
+        <div id="answer1" class="btn btn-primary" onclick="checkAnswer()">選択肢1</div>
+        <div id="answer2" class="btn btn-primary"onclick="checkAnswer()">選択肢1</div>
+      </div>
+    </div>
+    <div class="result pt-3">
+      <p id="correct">正解数：0</p>
+      <p id="incorrect">不正解数：0</p>
+    </div>
+    <div class="btn">
+      <button class="btn btn-secondary" onclick="initQuiz()">リセット</button>
+    </div>
+  </div>
+  <script src="./js/main.js"></script>
+</body>
+</html>
