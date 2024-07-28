@@ -1,13 +1,29 @@
 import { QuizInterface } from "./quizInterface";
 
-export class QuizClass {
+class QuizClass implements QuizInterface {
   private correctCount: number = 0; // 正解数をカウントする変数
   private incorrectCount: number = 0; // 不正解数をカウントする変数
   private quizCount: number = 0; // 問題数をカウントする変数
-  private quiz: QuizInterface = new QuizInterface();
   private questionElement: HTMLElement;
   private correctElement: HTMLElement;
   private incorrectElement: HTMLElement;
+  private quizData = [
+    {
+      question: "次のうち、最初にリリースされた言語はどれ？",
+      answers: ["Python", "JavaScript", "HTML"],
+      correct: 3,
+    },
+    {
+      question: "次のうち、最も人気のある言語はどれ？",
+      answers: ["Python", "JavaScript", "HTML"],
+      correct: 2,
+    },
+    {
+      question: "次のうち、最も新しい言語はどれ？",
+      answers: ["Python", "JavaScript", "HTML"],
+      correct: 1,
+    },
+  ];
 
   constructor() {
     this.questionElement = document.getElementById("question") as HTMLElement;
@@ -30,14 +46,17 @@ export class QuizClass {
 
   public showQuiz(quizCount: number): void {
     // 問題文を表示する
-    this.questionElement.textContent = this.quiz.quizData[quizCount].question;
+    this.questionElement.textContent = this.quizData[quizCount].question;
     // 問題数をカウントする
-    let count = this.quiz.quizData[0].answers.length;
+    let count = this.quizData[0].answers.length;
+    console.log(count);
     // 選択肢を表示する
     for (let i = 0; i < count; i++) {
       let answer = document.getElementById(`answer${i}`) as HTMLElement;
 
-      answer.textContent = this.quiz.quizData[quizCount].answers[i];
+      console.log(answer);
+
+      answer.textContent = this.quizData[quizCount].answers[i];
     }
   }
 
@@ -74,7 +93,7 @@ export class QuizClass {
    * @returns {void}
    */
   public compareQuizCount(quizCount: number): void {
-    if (quizCount >= this.quiz.quizData.length) {
+    if (quizCount >= this.quizData.length) {
       alert("終了です！");
       this.initQuiz();
     }
@@ -84,8 +103,8 @@ export class QuizClass {
    * 答え合わせを行う
    * @returns {boolean}
    */
-  private checkAnswer(): boolean {
-    const answer = this.quiz.quizData[this.quizCount].correct;
+  public checkAnswer(): boolean {
+    const answer = this.quizData[this.quizCount].correct;
     const select = document.querySelector(
       'input[name="flexRadioDefault"]:checked'
     ) as HTMLInputElement;
@@ -93,3 +112,5 @@ export class QuizClass {
     return Number(select.value) === answer;
   }
 }
+
+export { QuizClass };

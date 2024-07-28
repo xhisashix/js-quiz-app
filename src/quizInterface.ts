@@ -4,31 +4,45 @@ interface QuizData {
   correct: number;
 }
 
-export class QuizInterface {
-  public quizData: QuizData[] = [
-    {
-      question: "ゲーム市場、最も売れたゲームは次のうちどれ？",
-      answers: [
-        "スーパーファミコン",
-        "プレイステーション2",
-        "ニンテンドースイッチ",
-      ],
-      correct: 1,
-    },
-    {
-      question:
-        "任天堂が開発した、任天堂以外の会社が開発したゲーム機は次のうちどれ？",
-      answers: [
-        "スーパーファミコン",
-        "プレイステーション2",
-        "ニンテンドースイッチ",
-      ],
-      correct: 1,
-    },
-    {
-      question: "ファイナルファンタジーⅣの主人公の名前は？",
-      answers: ["フリオニール", "クラウド", "ティーダ"],
-      correct: 0,
-    },
-  ];
+interface QuizInterface {
+  /**
+   * クイズを初期化
+   * @returns {void}
+   */
+  initQuiz(): void;
+
+  /**
+   * クイズを表示
+   * @param {number} quizCount - 問題数
+   * @returns {void}
+   */
+  showQuiz(quizCount: number): void;
+
+  /**
+   * 回答を送信
+   * @returns {void
+   */
+  sendAnswer(): void;
+
+  /**
+   * 回答をチェック
+   * @returns {boolean}
+   */
+  checkAnswer(): boolean;
+
+  /**
+   * 結果を表示
+   * @param {boolean} result - 正誤判定
+   * @returns {void}
+   */
+  showResult(result: boolean): void;
+
+  /**
+   * 問題数を比較
+   * @param {number} quizCount - 問題数
+   * @returns {void}
+   */
+  compareQuizCount(quizCount: number): void;
 }
+
+export type { QuizInterface, QuizData };
